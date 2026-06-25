@@ -1,0 +1,149 @@
+﻿kod_stacji;nazwa_stacji;wojewodztwo_zrodlo;miejscowosc_zrodlo;adres;wgs84_fi_n;wgs84_lambda_e;kod_simc;korekta_powod
+DsBialka;Białka;DOLNOŚLĄSKIE;BIAŁKA;;51.197783;16.11739;0364630;manual: Białka k. Legnicy/Krotoszyc wg współrzędnych
+DsBielGrot;Bielawa - ul. Grota Roweckiego;DOLNOŚLĄSKIE;BIELAWA;ul. Grota Roweckiego 6;50.68251;16.617348;0983818;same_gmina_unique
+DsCzar07;Czarna Góra;DOLNOŚLĄSKIE;CZARNA GÓRA;;50.255072;16.801641;0855629;manual: Czarna Góra -> Sienna, gm. Stronie Śląskie
+DsCzerStraza;Czerniawa;DOLNOŚLĄSKIE;CZERNIAWA;ul. Strażacka 7;50.912475;15.31219;0936463;manual: Czerniawa -> Czerniawa-Zdrój
+DsJawDmow;Jawor - Dmowskiego;DOLNOŚLĄSKIE;JAWOR;ul. Dmowskiego 8;51.057121;16.179854;0954120;same_gmina_unique
+DsJaworMOB;Jawor;DOLNOŚLĄSKIE;JAWOR;ul. Armii Krajowej 9;51.049212;16.202317;0954120;same_gmina_unique
+DsKalinowka;Kalinówka;DOLNOŚLĄSKIE;KALINOWKA;;51.5226;16.244147;0367373;"manual: Kalinówka nie występuje w SIMC; przypisano do Rudna, gm. Rudna"
+DsKamGoraMOB;Kamienna Góra;DOLNOŚLĄSKIE;KAMIENNA GÓRA;Wałbrzyska 2c;50.788079;16.035122;0936026;same_gmina_unique
+DsKgMob;Kamienna Góra - Mobil Horiba;DOLNOŚLĄSKIE;KAMIENNA GÓRA;ul. Szpitalna;50.786873;16.029129;0936026;same_gmina_unique
+DsKgSien;Kamienna Góra - Sienkiewicza;DOLNOŚLĄSKIE;KAMIENNA GÓRA;ul. Sienkiewicza 5;50.781207;16.029155;0936026;same_gmina_unique
+DsLesnaRyn;Leśna - Rynek;DOLNOŚLĄSKIE;LEŚNA;ul. Rynek 19;51.023029;15.263245;0936121;same_gmina_unique
+DsNRudaSlupPM;Nowa Ruda - Słupiec (PM10);DOLNOŚLĄSKIE;NOWA RUDA - SŁUPIEC;ul. Wiejska 15;50.550008;16.553645;0984278;exact_unique
+DsRadomierz;Radomierzyce;DOLNOŚLĄSKIE;RADOMIERZYCE;;51.0583;14.973735;0193370;manual: Radomierzyce k. Zgorzelca wg współrzędnych
+DsSlone;Słone;DOLNOŚLĄSKIE;SŁONE;;51.661053;16.022652;0368941;manual: Słone, gm. Żukowice wg współrzędnych
+DsSnie04;Śnieżne Kotły;DOLNOŚLĄSKIE;ŚNIEŻNE KOTŁY;Śnieżne Kotły;50.778373;15.557425;0936285;manual: Śnieżne Kotły -> Piechowice
+DsSpal06;Spalona;DOLNOŚLĄSKIE;SPALONA;;50.27657;16.538299;0851577;manual: Spalona, gm. Bystrzyca Kłodzka wg współrzędnych
+DsTarnowek;Tarnówek;DOLNOŚLĄSKIE;TARNOWEK;;51.513299;16.166761;0366623;exact_unique
+DsWitk09;Witków;DOLNOŚLĄSKIE;WITKÓW;;50.81652;16.122029;0851979;manual: Witków, gm. Czarny Bór wg współrzędnych
+DsWitka;Witka;DOLNOŚLĄSKIE;WITKA;;51.041136;14.980327;0193393;manual: Witka -> Niedów/Zgorzelec wg współrzędnych
+DsZameczno;Zameczno;DOLNOŚLĄSKIE;ZAMECZNO;;51.669507;15.932111;0368846;manual: Zameczno, gm. Żukowice wg współrzędnych
+KpBydgBlota;Bydgoszcz Białe Błota;KUJAWSKO-POMORSKIE;BIAŁE BŁOTA;ul. Szubińska 8;53.100278;17.920278;0079496;same_gmina_unique
+KpKruszynLotnisko;Lotnisko Kruszyn;KUJAWSKO-POMORSKIE;KRUSZYN;;52.586114;19.01;0871746;manual: Kruszyn lotnisko k. Włocławka
+KpNwiesNaftobazy;Naftobazy;KUJAWSKO-POMORSKIE;NOWA WIES WIELKA;ul. Przemyslowa;52.970278;18.091389;0092775;exact_unique
+KpPiech;Lafarge-Piechcin;KUJAWSKO-POMORSKIE;PIECHCIN;;52.816389;18.032778;0079409;manual: Piechcin, gm. Barcin - wieś
+KpPrzysRCRRiOW;Przysiek - RCRRiOW;KUJAWSKO-POMORSKIE;PRZYSIEK;;53.029444;18.504444;0851152;manual: Przysiek k. Torunia/Zławieś Wielka wg współrzędnych
+KpSwiecGruczno;Frantschach - Gruczno;KUJAWSKO-POMORSKIE;GÓRNE GRUCZNO;;53.364722;18.316667;0097784;manual: Górne Gruczno -> Gruczno, gm. Świecie
+KpSwiecGruczno2;02 - Gruczno;KUJAWSKO-POMORSKIE;GÓRNE GRUCZNO;;53.355556;18.318333;0097784;manual: Górne Gruczno -> Gruczno, gm. Świecie
+KpSwiecJPawlMOB;Świecie, al. Jana Pawła II;KUJAWSKO-POMORSKIE;ŚWIECIE;al. Jana Pawła II 8;53.40758;18.428751;0929664;same_gmina_unique
+KpSwiecKolejowa;Frantschach - stacja nr 1;KUJAWSKO-POMORSKIE;ŚWIECIE;ul. Kolejowa 20;53.398056;18.416389;0929664;same_gmina_unique
+KpSwiecPrzechowo;01 Przechowo;KUJAWSKO-POMORSKIE;ŚWIECIE PRZECHOWO;;53.398056;18.416389;0929687;manual: Świecie Przechowo -> Przechowo
+KpSwiecSadowa;"Świecie ""Sądowa""";KUJAWSKO-POMORSKIE;ŚWIECIE;ul. Sądowa 5;53.407222;18.453889;0929664;same_gmina_unique
+KpWiktorowoG;Lafarge- Airpointer;KUJAWSKO-POMORSKIE;WIKTOROWO;Wiktorowo 22;52.822942;17.859031;0085373;manual: Wiktorowo k. Gąsawy/Żnina wg współrzędnych
+KpZielBoryTu;Zielonka, Bory Tucholskie;KUJAWSKO-POMORSKIE;ZIELONKA;Bory Tucholskie;53.662117;17.934017;0098677;manual: Zielonka, Bory Tucholskie -> Tuchola
+LbKrasKoszar;Kraśnik, ul. Koszarowa;LUBELSKIE;KRAŚNIK;ul. Koszarowa 10A;50.928239;22.228308;0956112;unique_RM96
+LbKrasnikSpoldziel;Kraśnik Ul. Spółdzielcza;LUBELSKIE;KRAŚNIK;ul. Spółdzielcza 3;50.927486;22.228567;0956112;unique_RM96
+LdBrzeReform;Brzeziny, ul. Reformacka;ŁÓDZKIE;BRZEZINY;ul. Reformacka 1;51.797806;19.756094;0977025;same_gmina_unique
+LdBrzeziWSSEMReforma;Brzeziny-Reformacka;ŁÓDZKIE;BRZEZINY;ul. Reformacka 3;-999.0;-999.0;0977025;same_gmina_unique
+LdGajewUjWod;Gajew, Ujęcie Wody;ŁÓDZKIE;GAJEW;Ujęcie wody;52.143258;19.233217;0578615;manual: Gajew, gm. Witonia wg współrzędnych
+LdLowiczSien;Łowicz, ul. Sienkiewicza;ŁÓDZKIE;ŁOWICZ;ul. Henryka Sienkiewicza 62;52.105847;19.939433;0977031;same_gmina_unique
+LdLowiczWSSEMSwFlori;Łowicz-Św.Floriana3;ŁÓDZKIE;ŁOWICZ;ul. Św. Floriana 3;52.108056;19.936944;0977031;same_gmina_unique
+LdSieradWIOSMKoscius;Sieradz-Kościuszki6;ŁÓDZKIE;SIERADZ;ul. Kościuszki 6;51.594444;18.736111;0976050;same_gmina_unique
+LdSieradWSSEMArmiiKr;Sieradz-ArmiiKrajowej7;ŁÓDZKIE;SIERADZ;ul. Armii Krajowej 7;51.583889;18.710556;0976050;same_gmina_unique
+LdSieradWSSEMPOW52;Sieradz-POW52;ŁÓDZKIE;SIERADZ;ul. POW 52;51.595833;18.720278;0976050;same_gmina_unique
+LdSieraPolna;Sieradz, ul. Polna;ŁÓDZKIE;SIERADZ;ul. Polna 18/20;51.592058;18.734811;0976050;same_gmina_unique
+LdSierGrunwa;Sieradz-Grunwaldzka 28;ŁÓDZKIE;SIERADZ;ul. Grunwaldzka 28;51.590125;18.717333;0976050;same_gmina_unique
+MpBochKonfed;Bochnia, ul. Konfederatów Barskich;MAŁOPOLSKIE;BOCHNIA;ul. Konfederatów Barskich;49.969017;20.439511;0981682;same_gmina_unique
+MpBochniWSSEKazi0104;Bochnia Kazimierza Wielkiego 67;MAŁOPOLSKIE;BOCHNIA;ul. Kazimierza Wielkiego 67;49.959167;20.420556;0981682;same_gmina_unique
+MpBochniWSSEKons0105;Bochnia Kostytucji 3 Maja Nr 5;MAŁOPOLSKIE;BOCHNIA;ul. Kostytucji 3 Maja Nr 5;49.972778;20.428056;0981682;same_gmina_unique
+MpBochniWSSESoln0102;Bochnia Solna;MAŁOPOLSKIE;BOCHNIA;ul. Solna;49.97;20.432222;0981682;same_gmina_unique
+MpDobczSzkolMOB;Dobczyce, ul. Szkolna;MAŁOPOLSKIE;DOBCZYCE;ul. Szkolna;49.881108;20.100819;0951505;same_gmina_unique
+MpKrakAlKras;Kraków, Aleja Krasińskiego;MAŁOPOLSKIE;KRAKÓW;al. Krasińskiego;50.057678;19.926189;0950463;same_gmina_unique
+MpKrakBujaka;Kraków, ul. Bujaka;MAŁOPOLSKIE;KRAKÓW;ul. Bujaka;50.010575;19.949189;0950463;same_gmina_unique
+MpKrakBulwar;Kraków, ul. Bulwarowa;MAŁOPOLSKIE;KRAKÓW;ul. Bulwarowa;50.069308;20.053492;0950463;same_gmina_unique
+MpKrakDietla;Kraków, ul. Dietla;MAŁOPOLSKIE;KRAKÓW;ul. Dietla;50.057447;19.946008;0950463;same_gmina_unique
+MpKrakKamien;Kraków, ul. Kamieńskiego;MAŁOPOLSKIE;KRAKÓW;ul. Kamieńskiego;50.024605;19.97846;0950463;same_gmina_unique
+MpKrakOsPias;Kraków, os. Piastów;MAŁOPOLSKIE;KRAKÓW;os. Piastów;50.098508;20.018269;0950463;same_gmina_unique
+MpKrakowWIOSPrad6115;Krowodrza-Kraków, szpital Jana Pawła II;MAŁOPOLSKIE;KRAKÓW;ul. Prądnicka;50.0875;19.926111;0950463;same_gmina_unique
+MpKrakowWSSEKapi6108;Kraków Swoszowice Kąpielowa;MAŁOPOLSKIE;KRAKÓW;ul. Swoszowice Kąpielowa 70;49.991667;19.935;0950463;same_gmina_unique
+MpKrakowWSSEPrad6102;Krakow Pradnicka 76;MAŁOPOLSKIE;KRAKÓW;ul. Prądnicka 76;50.0875;19.938056;0950463;same_gmina_unique
+MpKrakowWSSERPod6113;Kraków Rynek Podgórski;MAŁOPOLSKIE;KRAKÓW;ul. Rynek Podgórski;50.04;19.943333;0950463;same_gmina_unique
+MpKrakSwoszo;Kraków, os. Swoszowice;MAŁOPOLSKIE;KRAKÓW;ul. Lusińska;49.991442;19.936792;0950463;same_gmina_unique
+MpKrakTelime;Kraków, ul. Telimeny;MAŁOPOLSKIE;KRAKÓW;ul. Telimeny 9;50.019036;20.016822;0950463;same_gmina_unique
+MpKrakWadow;Kraków, os. Wadów;MAŁOPOLSKIE;KRAKÓW;Wadów;50.100569;20.122561;0950463;same_gmina_unique
+MpKrakZloRog;Kraków, ul. Złoty Róg;MAŁOPOLSKIE;KRAKÓW;Złoty Róg;50.081197;19.895358;0950463;same_gmina_unique
+MpKrynicWSSENowo1002;Krynica Nowotarskiego RWM;MAŁOPOLSKIE;KRYNICA;ul. Nowotarskiego RWM;-999.0;-999.0;0960390;manual: Krynica -> Krynica-Zdrój
+MpMiechoWIOSKono0802;Miechów, ul. Konopnickiej;MAŁOPOLSKIE;MIECHÓW;ul. Konopnickiej;50.360036;20.038672;0947225;same_gmina_unique
+MpMiechoWIOSKsSk0801;Miechów Księdza Skorupki;MAŁOPOLSKIE;MIECHÓW;ul. Księdza Skorupki 5;50.354722;20.024722;0947225;same_gmina_unique
+MpMyslenSoli;Myślenice;MAŁOPOLSKIE;MYŚLENICE;Solidarności 6;49.831237;19.923591;0951617;same_gmina_unique
+MpMyslenWIOSKazi0901;Myslenice Kazimierza Wielkiego;MAŁOPOLSKIE;MYŚLENICE;ul. Kazimierza Wielkiego 199;-999.0;-999.0;0951617;same_gmina_unique
+MpMyslenWIOSKosc0902;Myślenice Kościuszki;MAŁOPOLSKIE;MYŚLENICE;ul. Kościuszki 16;49.826667;19.936389;0951617;same_gmina_unique
+MpMyslenWIOSRyne0905;Mobilna Myślenice Rynek;MAŁOPOLSKIE;MYŚLENICE;ul. Rynek;49.835;19.938056;0951617;same_gmina_unique
+MpMyslenWIOSRyne0906;Myślenice Rynek;MAŁOPOLSKIE;MYŚLENICE;ul. Rynek;49.835;19.938056;0951617;same_gmina_unique
+MpMysleRynekMOB;Myślenice, Rynek;MAŁOPOLSKIE;MYŚLENICE;Rynek;49.834922;19.938114;0951617;same_gmina_unique
+MpPiwnicWSSERyne1004;Piwniczna Rynek 2;MAŁOPOLSKIE;PIWNICZNA;ul. Rynek 2;49.4375;20.708611;0961768;manual: Piwniczna -> Piwniczna-Zdrój
+MpPiwnZdrojoMOB;Piwniczna-Zdrój, ul. Zdrojowa;MAŁOPOLSKIE;PIWNICZNA;ul. Zdrojowa;49.444056;20.719889;0961768;manual: Piwniczna -> Piwniczna-Zdrój
+MpTarBitStud;Tarnów, ul. Bitwy pod Studziankami;MAŁOPOLSKIE;TARNÓW;ul. Bitwy pod Studziankami;50.020169;21.004167;0981570;same_gmina_unique
+MpTarnowWIOSSoli6303;Tarnów Al. Solidarności;MAŁOPOLSKIE;TARNÓW;al. Solidarności;50.016111;20.983611;0981570;same_gmina_unique
+MpTarnowWSSEMosc6301;Tarnów ul.Mościckiego 10;MAŁOPOLSKIE;TARNÓW;ul. Mościckiego 10;50.006667;20.975278;0981570;same_gmina_unique
+MpTarnowWSSEWest6302;Tarnów Westerplatte;MAŁOPOLSKIE;TARNÓW;ul. Westerplatte 10;50.023333;21.005;0981570;same_gmina_unique
+MpTarRoSitko;Tarnów, ul. Ks. Romana Sitko;MAŁOPOLSKIE;TARNÓW;ul. Ks. Romana Sitko;50.018253;20.992578;0981570;same_gmina_unique
+MpWielDembowMOB;Wieliczka, ul. Dembowskiego;MAŁOPOLSKIE;WIELICZKA;ul. Dembowskiego;49.98825;20.059;0952232;same_gmina_unique
+MpWielicWIOSOSP1902;Wieliczka OSP;MAŁOPOLSKIE;WIELICZKA;ul. OSP Plac Targowy;49.975833;20.057778;0952232;same_gmina_unique
+MpWysowaParkMOB;Wysowa-Zdrój, Park Zdrojowy;MAŁOPOLSKIE;UŚCIE GORLICKIE WYSOWA;Wysowa;49.440175;21.178087;0468370;manual: Wysowa -> Wysowa-Zdrój
+MpWysowaWSSE0502;Uście Gorlickie Wysowa;MAŁOPOLSKIE;UŚCIE GORLICKIE WYSOWA;ul. Wysowa;49.424722;21.176389;0468370;manual: Wysowa -> Wysowa-Zdrój
+MpZakopaSien;Zakopane, ul. Sienkiewicza;MAŁOPOLSKIE;ZAKOPANE;ul. Sienkiewicza;49.293564;19.960083;0963773;same_gmina_unique
+MzBialaKmiciMOB;Biała, ul. Kmicica;MAZOWIECKIE;BIAŁA;ul. Andrzeja Kmicica 33;52.602534;19.6451;0576036;manual: Biała, gm. Stara Biała wg współrzędnych
+MzGranicaKPN;Granica, KPN;MAZOWIECKIE;GRANICA;Kampinoski Park Narodowy;52.285858;20.454653;0003122;gmina_in_station_text
+MzOstroHalle;Ostrołęka, ul. Hallera;MAZOWIECKIE;OSTROŁĘKA;ul. gen. J. Hallera 12;53.083736;21.579322;0966079;same_gmina_unique
+MzOstrolKoscWSSE;Ostrołęka-Kościuszki;MAZOWIECKIE;OSTROŁĘKA;ul. Kościuszki 19;53.085319;21.568983;0966079;same_gmina_unique
+MzOstrolTargowa;Ostrołęka-Targowa;MAZOWIECKIE;OSTROŁĘKA;ul. Targowa 4;53.084023;21.589205;0966079;same_gmina_unique
+MzPiaseczDworWSSE;Piaseczno-Dworska;MAZOWIECKIE;PIASECZNO;ul. Dworska;52.051445;21.005582;0921438;same_gmina_unique
+MzPiasPulask;Piastów, ul. Pułaskiego;MAZOWIECKIE;PIASTÓW;ul. Pułaskiego 6/8;52.191728;20.837489;0921496;same_gmina_unique
+MzPiastWarszWSSE;Piastów-Warszawska;MAZOWIECKIE;PIASTÓW;ul. Warszawska 24;52.186581;20.843524;0921496;same_gmina_unique
+MzPlockPKN1;Płock-Trzepowo;MAZOWIECKIE;TRZEPOWO;ul. Trzepowo 56;52.5888;19.724289;0968859;gmina_in_station_text
+MzPruszKraszeWSSE;Pruszków-Kraszewskiego;MAZOWIECKIE;PRUSZKÓW;ul. Kraszewskiego 14;52.162262;20.812831;0921510;same_gmina_unique
+MzPruszMajWSSE;Pruszków-Majowa;MAZOWIECKIE;PRUSZKÓW;ul. Majowa 14;52.17154;20.810253;0921510;same_gmina_unique
+MzTluszczJKiel;Tłuszcz-Kielaka;MAZOWIECKIE;TŁUSZCZ;ul. Jana Kielaka 1;52.425833;21.429167;0966441;same_gmina_unique
+MzWyszDaszynWSSE;Wyszków-Daszyńskiego;MAZOWIECKIE;WYSZKÓW;ul. Daszyńskiego 28;52.593993;21.458079;0966470;same_gmina_unique
+MzZwolenWSSE;Zwoleń-Kościuszki;MAZOWIECKIE;ZWOLEŃ;ul. Kościuszki 11;51.35581;21.578566;0974096;same_gmina_unique
+OpGora12728;Góra Św. Anny lokalna 12728;OPOLSKIE;GÓRA ŚW. ANNY;ul. Leśnicka;50.451667;18.163333;0497970;manual: Góra Św. Anny -> Góra Świętej Anny, gm. Leśnica
+PdBorsukowiz;Borsukowizna, Szkółka Leśna;PODLASKIE;BORSUKOWIZNA;;53.215492;23.642153;0032796;manual: Borsukowizna, gm. Krynki wg współrzędnych
+PkCzarnaWSSENafGaz;Czarna-OśrNaftaGaz-WSSE;PODKARPACKIE;CZARNA;ul. Ośrodek Wyp-Szkol Nafta-Gaz;49.308889;22.663903;0348000;manual: Czarna -> Czarna Górna, gm. Czarna/Bieszczady wg współrzędnych
+PkGorzycWSSEKEN;Gorzyce-KEN-WSSE;PODKARPACKIE;GORZYCE;ul. Komisji Edukacji Narodowej;50.657792;21.84528;0791496;same_gmina_unique
+PkJarosPruch;Jarosław, ul. Pruchnicka;PODKARPACKIE;JAROSŁAW;Pruchnicka;50.012083;22.674772;0972192;same_gmina_unique
+PkJarosWIOSJanPawII;Jarosław-JanaPawłaII-WIOS;PODKARPACKIE;JAROSŁAW;ul. Jana Pawła II;50.015833;22.672778;0972192;same_gmina_unique
+PkJarosWSSE3Maja;Jarosław - 3 Maja -WSSE;PODKARPACKIE;JAROSŁAW;ul. 3 Maja;50.013333;22.693056;0972192;same_gmina_unique
+PkJarosWSSEGrunw;Jarosław-Grunwaldzka-WSSE;PODKARPACKIE;JAROSŁAW;ul. Grunwaldzka 7;50.016389;22.680278;0972192;same_gmina_unique
+PkKrosKletow;Krosno, ul. Kletówki;PODKARPACKIE;KROSNO;ul. Kletówki;49.690169;21.7497;0952410;same_gmina_unique
+PkKrosnoWSSEKisiel;Krosno-Kisielewskiego-WSSE;PODKARPACKIE;KROSNO;ul. Kisielewskiego 12;49.683889;21.755278;0952410;same_gmina_unique
+PkKrosnoWSSEKisielewskiego;Krosno-Kisielewskiego;PODKARPACKIE;KROSNO;ul. Kisielewskiego 12;49.683611;21.755556;0952410;same_gmina_unique
+PkKrosnoWSSELewak;Krosno-Lewakowskiego-WSSE;PODKARPACKIE;KROSNO;ul. Lewakowskiego 14;49.693889;21.755278;0952410;same_gmina_unique
+PkKrosnoWSSEStasz;Krosno-Staszica-WSSE;PODKARPACKIE;KROSNO;ul. Staszica;49.691667;21.767222;0952410;same_gmina_unique
+PkLatosZdrojMOB;Latoszyn-Zdrój-mobilna;PODKARPACKIE;LATOSZYN;;50.019053;21.369344;0818255;manual: Latoszyn-Zdrój -> Latoszyn, gm. Dębica
+PkPrzemGrunw;Przemyśl, ul. Grunwaldzka;PODKARPACKIE;PRZEMYŚL;ul. Grunwaldzka;49.784339;22.756239;0971672;same_gmina_unique
+PkPrzemWIOSDolin;Przemyśl-Dolińskiego-WIOŚ;PODKARPACKIE;PRZEMYŚL;ul. Dolińskiego 4;49.786667;22.758056;0971672;same_gmina_unique
+PkPrzemWIOSPDom;Przemyśl-Pl.Dominikański-WIOS;PODKARPACKIE;PRZEMYŚL;pl. Dominikański;49.782778;22.766667;0971672;same_gmina_unique
+PkPrzemWSSEGlaz;Przemyśl-Glazera-WSSE;PODKARPACKIE;PRZEMYŚL;ul. Glazera 9;49.786667;22.759167;0971672;same_gmina_unique
+PkPrzemWSSEMariac;Przemyśl-Mariacka-WSSE;PODKARPACKIE;PRZEMYŚL;ul. Mariacka 4;49.778333;22.788611;0971672;same_gmina_unique
+PkPrzemyslWIOSMick;Przemyśl-Mickiewicza-WIOS;PODKARPACKIE;PRZEMYŚL;ul. Mickiewicza;49.782433;22.782908;0971672;same_gmina_unique
+Pm.09.s067m;WSSE Malbork;POMORSKIE;MALBORK;ul. Konopnickiej 6;54.031667;19.034167;0932815;same_gmina_unique
+PmGac;WIOŚ Gać - Słowiński Park Narodowy;POMORSKIE;GAĆ;;54.693806;17.458067;0744410;manual: Gać, Słowiński Park Narodowy -> gm. Główczyce
+PmMalMickiew;Malbork, ul. Mickiewicza;POMORSKIE;MALBORK;ul. Mickiewicza;54.031247;19.032899;0932815;same_gmina_unique
+SkJedrMieszkMOB;Jędrzejów, MOBILNA;ŚWIĘTOKRZYSKIE;JĘDRZEJÓW;ul. Mieszka I 9;50.643673;20.284885;0947030;same_gmina_unique
+SKNowinyCemen;Nowiny;ŚWIĘTOKRZYSKIE;SITKÓWKA NOWINY;ul. Przemysłowa 32;50.803894;20.543278;0267453;manual: Sitkówka-Nowiny/Nowiny -> Nowiny
+SkNowiParkow;Nowiny, ul. Parkowa;ŚWIĘTOKRZYSKIE;NOWINY;ul. Parkowa;50.823108;20.533506;0267453;same_gmina_unique
+SkSolecZdroj;Solec-Zdrój;ŚWIĘTOKRZYSKIE;SOLEC ZDRÓJ;;50.358659;20.886184;0271035;manual: Solec Zdrój -> Solec-Zdrój
+SkTrzciOsiek;Trzcianka;ŚWIĘTOKRZYSKIE;TRZCIANKA;Trzcianka 7;50.486298;21.394103;0802283;manual: Trzcianka, gm. Osiek wg kodu stacji/adresu
+SkWloszKilinMOB;Włoszczowa, ul. Kilińskiego;ŚWIĘTOKRZYSKIE;WŁOSZCZOWA;ul. Kilińskiego;50.850321;19.97199;0948472;same_gmina_unique
+SlKuzniGliw_wiejs;Kuźnia Nieb_gliwic-WIOŚ;ŚLĄSKIE;KUŹNIA NIEBOROWICKA;ul. Wiejska 12;-999.0;-999.0;0219000;manual: Kuźnia Nieborowicka -> Kuźnia Nieborowska
+WmBiskupMickMOB;WIOŚ Biskupiec-Mobilna;WARMIŃSKO-MAZURSKIE;BISKUPIEC;ul. Mickiewicza 8;53.860702;20.957892;0964590;unique_RM96
+WmElk_WSSE_Toru;Elk-PSSE-Torunska;WARMIŃSKO-MAZURSKIE;EŁK;ul. Toruńska 6A/1;53.831389;22.350278;0977670;unique_RM96
+WmElkStadion;Ełk, ul. Piłsudskiego;WARMIŃSKO-MAZURSKIE;EŁK;ul. Piłsudskiego 27;53.828389;22.348338;0977670;unique_RM96
+WmElkWIOS_PM10;Ełk - ul. Toruńska - WIOŚ PM10;WARMIŃSKO-MAZURSKIE;EŁK;ul. Toruńska 8 A;53.831389;22.350278;0977670;unique_RM96
+WmGlitajn;WIOŚ Glitajny;WARMIŃSKO-MAZURSKIE;GLITAJNY;;54.184728;21.152914;0478658;manual: Glitajny, gm. Korsze wg współrzędnych
+WpBoroDrapal;Borówiec, ul. Drapałka;WIELKOPOLSKIE;BORÓWIEC;ul. Drapałka 4;52.27672;17.074187;0586371;manual: Borówiec, ul. Drapałka -> gm. Kórnik
+WpKonin31017;Konin, ul. Wieniawskiego 8;WIELKOPOLSKIE;KONIN;ul. Wieniawskiego 8;-999.0;-999.0;0948667;same_gmina_unique
+WpKonin31018;Konin, ul. Leśna 23;WIELKOPOLSKIE;KONIN;ul. Leśna 21;-999.0;-999.0;0948667;same_gmina_unique
+WpKoninStaszica;Konin, ul. Staszica 16;WIELKOPOLSKIE;KONIN;ul. Staszica 16;-999.0;-999.0;0948667;same_gmina_unique
+WpKoniWyszyn;Konin, ul. Wyszyńskiego;WIELKOPOLSKIE;KONIN;ul. Wyszyńskiego 3;52.22565;18.268927;0948667;same_gmina_unique
+WpKozieosLes;Koziegłowy, os.Leśne;WIELKOPOLSKIE;KOZIEGŁOWY;osiedle Leśne 22;52.449295;16.999634;0582048;manual: Koziegłowy, os. Leśne -> gm. Czerwonak
+WpPiaskiKrzy;Piaski, Krzyżówka;WIELKOPOLSKIE;KRZYŻÓWKA;Piaski 10;52.501318;17.773175;0300914;manual: Krzyżówka, gm. Witkowo wg współrzędnych
+WpPila57192;Piła, ul. Okrzei 8;WIELKOPOLSKIE;PIŁA;ul. Okrzei 8;-999.0;-999.0;0966530;same_gmina_unique
+WpPilaKusoci;Pila, ul. Kusocińskiego;WIELKOPOLSKIE;PIŁA;ul. Kusocińskiego 10A;53.154408;16.759572;0966530;same_gmina_unique
+WpTurek31046;Turek, ul. Uniejowska 1a;WIELKOPOLSKIE;TUREK;ul. Uniejowska 1a;-999.0;-999.0;0949336;same_gmina_unique
+WpWKP009;WKPPiotrkowice09;WIELKOPOLSKIE;PIOTRKOWICE;;52.353806;18.345576;0297112;manual: Piotrkowice, gm. Ślesin wg współrzędnych
+WpWKP010;WpWKPAdamów10;WIELKOPOLSKIE;ADAMÓW;;52.153849;18.362573;0288930;manual: Adamów, gm. Krzymów wg współrzędnych
+ZpStarStargardWSSE;Stargard Szczeciński;ZACHODNIOPOMORSKIE;STARGARD SZCZECIŃSKI;ul. Czarnieckiego 34;53.337415;15.039209;0979596;manual: Stargard Szczeciński -> Stargard
+ZpSzcStorkowoDO;Storkowo;ZACHODNIOPOMORSKIE;STORKOWO;ul. Storkowo;53.779722;16.497222;0306650;manual: Storkowo, gm. Grzmiąca wg współrzędnych

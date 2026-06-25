@@ -1,0 +1,62 @@
+﻿wojewodztwo_miejscowosc;miejscowosc_id;kod_stacji;kod_miedzynarodowy;nazwa_stacji;stary_kod_stacji;data_uruchomienia;data_zamkniecia;typ_stacji;typ_obszaru;rodzaj_stacji;adres;wgs84_fi_n;wgs84_lambda_e;wojewodztwo_nazwa;miejscowosc_nazwa
+('DOLNOŚLĄSKIE', 'CZARNA GÓRA');;DsCzar07;PL0186A;Czarna Góra;;1996-12-01;2008-09-30;tło;pozamiejski;kontenerowa stacjonarna;;50.255072;16.801641;DOLNOŚLĄSKIE;CZARNA GÓRA
+('DOLNOŚLĄSKIE', 'CZERNIAWA');;DsCzerStraza;PL0028A;Czerniawa;DsCzer02;1996-07-01;;tło;pozamiejski;kontenerowa stacjonarna;ul. Strażacka 7;50.912475;15.31219;DOLNOŚLĄSKIE;CZERNIAWA
+('DOLNOŚLĄSKIE', 'KALINOWKA');;DsKalinowka;PL0261A;Kalinówka;;2003-01-01;2013-12-31;przemysłowa;pozamiejski;kontenerowa stacjonarna;;51.5226;16.244147;DOLNOŚLĄSKIE;KALINOWKA
+('DOLNOŚLĄSKIE', 'LEŚNA');;DsLesnaRyn;;Leśna - Rynek;;1994-01-02;2002-12-31;tło;miejski;w budynku;ul. Rynek 19;51.023029;15.263245;DOLNOŚLĄSKIE;LEŚNA
+('DOLNOŚLĄSKIE', 'NOWA RUDA - SŁUPIEC');;DsNRudaSlupPM;;Nowa Ruda - Słupiec (PM10);;2005-03-01;2006-12-31;tło;miejski;wolnostojący pobornik pyłu;ul. Wiejska 15;50.550008;16.553645;DOLNOŚLĄSKIE;NOWA RUDA - SŁUPIEC
+('DOLNOŚLĄSKIE', 'ŚNIEŻNE KOTŁY');;DsSnie04;PL0058A;Śnieżne Kotły;;1996-07-01;2010-12-31;tło;pozamiejski;kontenerowa stacjonarna;Śnieżne Kotły;50.778373;15.557425;DOLNOŚLĄSKIE;ŚNIEŻNE KOTŁY
+('DOLNOŚLĄSKIE', 'SPALONA');;DsSpal06;;Spalona;;1996-11-15;2004-05-15;tło;pozamiejski;kontenerowa stacjonarna;;50.27657;16.538299;DOLNOŚLĄSKIE;SPALONA
+('DOLNOŚLĄSKIE', 'TARNOWEK');;DsTarnowek;PL0268A;Tarnówek;;2003-01-01;2013-12-31;przemysłowa;pozamiejski;kontenerowa stacjonarna;;51.513299;16.166761;DOLNOŚLĄSKIE;TARNOWEK
+('DOLNOŚLĄSKIE', 'WITKA');;DsWitka;PL0319A;Witka;;1996-01-01;2013-12-31;przemysłowa;pozamiejski;kontenerowa stacjonarna;;51.041136;14.980327;DOLNOŚLĄSKIE;WITKA
+('KUJAWSKO-POMORSKIE', 'NOWA WIES WIELKA');;KpNwiesNaftobazy;PL0333A;Naftobazy;;1990-01-01;2013-12-31;przemysłowa;pozamiejski;kontenerowa stacjonarna;ul. Przemyslowa;52.970278;18.091389;KUJAWSKO-POMORSKIE;NOWA WIES WIELKA
+('KUJAWSKO-POMORSKIE', 'PIECHCIN');;KpPiech;PL0334A;Lafarge-Piechcin;;1998-06-01;2011-12-31;przemysłowa;pozamiejski;kontenerowa stacjonarna;;52.816389;18.032778;KUJAWSKO-POMORSKIE;PIECHCIN
+('KUJAWSKO-POMORSKIE', 'GÓRNE GRUCZNO');;KpSwiecGruczno;;Frantschach - Gruczno;;1997-01-01;2003-02-27;przemysłowa;pozamiejski;kontenerowa stacjonarna;;53.364722;18.316667;KUJAWSKO-POMORSKIE;GÓRNE GRUCZNO
+('KUJAWSKO-POMORSKIE', 'GÓRNE GRUCZNO');;KpSwiecGruczno2;PL0069A;02 - Gruczno;;2005-02-01;2011-12-31;przemysłowa;pozamiejski;kontenerowa stacjonarna;;53.355556;18.318333;KUJAWSKO-POMORSKIE;GÓRNE GRUCZNO
+('KUJAWSKO-POMORSKIE', 'ŚWIECIE');;KpSwiecJPawlMOB;PL0816A;Świecie, al. Jana Pawła II;;2022-12-28;;tło;miejski;mobilna;al. Jana Pawła II 8;53.40758;18.428751;KUJAWSKO-POMORSKIE;ŚWIECIE
+('KUJAWSKO-POMORSKIE', 'ŚWIECIE');;KpSwiecKolejowa;;Frantschach - stacja nr 1;;1995-03-10;2003-03-10;przemysłowa;podmiejski;kontenerowa stacjonarna;ul. Kolejowa 20;53.398056;18.416389;KUJAWSKO-POMORSKIE;ŚWIECIE
+('KUJAWSKO-POMORSKIE', 'ŚWIECIE PRZECHOWO');;KpSwiecPrzechowo;PL0070A;01 Przechowo;;2005-02-01;2014-01-01;przemysłowa;podmiejski;kontenerowa stacjonarna;;53.398056;18.416389;KUJAWSKO-POMORSKIE;ŚWIECIE PRZECHOWO
+('KUJAWSKO-POMORSKIE', 'ŚWIECIE');;KpSwiecSadowa;PL0336A;"Świecie ""Sądowa""";;2003-03-16;2010-12-31;tło;miejski;w budynku;ul. Sądowa 5;53.407222;18.453889;KUJAWSKO-POMORSKIE;ŚWIECIE
+('KUJAWSKO-POMORSKIE', 'WIKTOROWO');;KpWiktorowoG;PL0587A;Lafarge- Airpointer;KpAirpWiktorowo;2012-08-01;2015-01-01;przemysłowa;pozamiejski;kontenerowa stacjonarna;Wiktorowo 22;52.822942;17.859031;KUJAWSKO-POMORSKIE;WIKTOROWO
+('KUJAWSKO-POMORSKIE', 'ZIELONKA');;KpZielBoryTu;PL0077A;Zielonka, Bory Tucholskie;KpZielBoryTuch;2004-05-27;;tło;pozamiejski;kontenerowa stacjonarna;Bory Tucholskie;53.662117;17.934017;KUJAWSKO-POMORSKIE;ZIELONKA
+('ŁÓDZKIE', 'BRZEZINY');;LdBrzeziWSSEMReforma;;Brzeziny-Reformacka;;1990-10-16;2010-01-01;tło;miejski;w budynku;ul. Reformacka 3;-999.0;-999.0;ŁÓDZKIE;BRZEZINY
+('MAŁOPOLSKIE', 'DOBCZYCE');;MpDobczSzkolMOB;PL0638A;Dobczyce, ul. Szkolna;;2016-01-01;2016-12-31;tło;miejski;mobilna;ul. Szkolna;49.881108;20.100819;MAŁOPOLSKIE;DOBCZYCE
+('MAŁOPOLSKIE', 'KRYNICA');;MpKrynicWSSENowo1002;;Krynica Nowotarskiego RWM;;2005-01-01;2008-12-31;tło;miejski;w budynku;ul. Nowotarskiego RWM;-999.0;-999.0;MAŁOPOLSKIE;KRYNICA
+('MAŁOPOLSKIE', 'MIECHÓW');;MpMiechoWIOSKono0802;PL0628A;Miechów, ul. Konopnickiej;;2014-01-01;2014-12-31;tło;miejski;mobilna;ul. Konopnickiej;50.360036;20.038672;MAŁOPOLSKIE;MIECHÓW
+('MAŁOPOLSKIE', 'MIECHÓW');;MpMiechoWIOSKsSk0801;;Miechów Księdza Skorupki;;2002-01-01;2003-12-31;tło;miejski;w budynku;ul. Księdza Skorupki 5;50.354722;20.024722;MAŁOPOLSKIE;MIECHÓW
+('MAŁOPOLSKIE', 'MYŚLENICE');;MpMyslenSoli;PL0806A;Myślenice;;2021-03-17;;tło;miejski;wolnostojący pobornik pyłu;Solidarności 6;49.831237;19.923591;MAŁOPOLSKIE;MYŚLENICE
+('MAŁOPOLSKIE', 'MYŚLENICE');;MpMyslenWIOSKazi0901;;Myslenice Kazimierza Wielkiego;;2002-01-01;2002-12-31;tło;miejski;BRAK DANYCH;ul. Kazimierza Wielkiego 199;-999.0;-999.0;MAŁOPOLSKIE;MYŚLENICE
+('MAŁOPOLSKIE', 'MYŚLENICE');;MpMyslenWIOSKosc0902;;Myślenice Kościuszki;;2002-01-01;2003-12-31;tło;miejski;w budynku;ul. Kościuszki 16;49.826667;19.936389;MAŁOPOLSKIE;MYŚLENICE
+('MAŁOPOLSKIE', 'MYŚLENICE');;MpMyslenWIOSRyne0905;;Mobilna Myślenice Rynek;;2004-08-09;2004-10-30;tło;miejski;mobilna;ul. Rynek;49.835;19.938056;MAŁOPOLSKIE;MYŚLENICE
+('MAŁOPOLSKIE', 'MYŚLENICE');;MpMyslenWIOSRyne0906;PL0118A;Myślenice Rynek;;2004-12-16;2008-12-31;tło;miejski;kontenerowa stacjonarna;ul. Rynek;49.835;19.938056;MAŁOPOLSKIE;MYŚLENICE
+('MAŁOPOLSKIE', 'MYŚLENICE');;MpMysleRynekMOB;PL0615A;Myślenice, Rynek;MpMyslenWIOSRyne0907;2015-01-01;2015-12-31;tło;miejski;mobilna;Rynek;49.834922;19.938114;MAŁOPOLSKIE;MYŚLENICE
+('MAŁOPOLSKIE', 'PIWNICZNA');;MpPiwnicWSSERyne1004;;Piwniczna Rynek 2;;2004-03-08;2005-12-31;tło;miejski;w budynku;ul. Rynek 2;49.4375;20.708611;MAŁOPOLSKIE;PIWNICZNA
+('MAŁOPOLSKIE', 'PIWNICZNA');;MpPiwnZdrojoMOB;PL0645A;Piwniczna-Zdrój, ul. Zdrojowa;;2016-01-01;2016-12-31;tło;miejski;mobilna;ul. Zdrojowa;49.444056;20.719889;MAŁOPOLSKIE;PIWNICZNA
+('MAŁOPOLSKIE', 'WIELICZKA');;MpWielDembowMOB;PL0648A;Wieliczka, ul. Dembowskiego;;2016-01-01;2016-12-31;tło;miejski;mobilna;ul. Dembowskiego;49.98825;20.059;MAŁOPOLSKIE;WIELICZKA
+('MAŁOPOLSKIE', 'WIELICZKA');;MpWielicWIOSOSP1902;;Wieliczka OSP;;2002-01-01;2003-12-31;tło;miejski;w budynku;ul. OSP Plac Targowy;49.975833;20.057778;MAŁOPOLSKIE;WIELICZKA
+('MAŁOPOLSKIE', 'UŚCIE GORLICKIE WYSOWA');;MpWysowaParkMOB;PL0840A;Wysowa-Zdrój, Park Zdrojowy;;2023-12-19;;tło;podmiejski;mobilna;Wysowa;49.440175;21.178087;MAŁOPOLSKIE;UŚCIE GORLICKIE WYSOWA
+('MAŁOPOLSKIE', 'UŚCIE GORLICKIE WYSOWA');;MpWysowaWSSE0502;;Uście Gorlickie Wysowa;;2000-01-01;2004-12-31;tło;pozamiejski;w budynku;ul. Wysowa;49.424722;21.176389;MAŁOPOLSKIE;UŚCIE GORLICKIE WYSOWA
+('MAZOWIECKIE', 'PIASECZNO');;MzPiaseczDworWSSE;PL0133A;Piaseczno-Dworska;;1981-10-01;2009-12-31;tło;miejski;w budynku;ul. Dworska;52.051445;21.005582;MAZOWIECKIE;PIASECZNO
+('MAZOWIECKIE', 'TRZEPOWO');;MzPlockPKN1;PL0396A;Płock-Trzepowo;;1996-12-01;2009-12-31;przemysłowa;miejski;kontenerowa stacjonarna;ul. Trzepowo 56;52.5888;19.724289;MAZOWIECKIE;TRZEPOWO
+('MAZOWIECKIE', 'TŁUSZCZ');;MzTluszczJKiel;PL0139A;Tłuszcz-Kielaka;;2003-08-01;2010-12-31;tło;podmiejski;kontenerowa stacjonarna;ul. Jana Kielaka 1;52.425833;21.429167;MAZOWIECKIE;TŁUSZCZ
+('MAZOWIECKIE', 'WYSZKÓW');;MzWyszDaszynWSSE;;Wyszków-Daszyńskiego;;1982-01-01;2006-12-31;tło;miejski;w budynku;ul. Daszyńskiego 28;52.593993;21.458079;MAZOWIECKIE;WYSZKÓW
+('MAZOWIECKIE', 'ZWOLEŃ');;MzZwolenWSSE;;Zwoleń-Kościuszki;;2004-01-01;2006-12-31;tło;miejski;w budynku;ul. Kościuszki 11;51.35581;21.578566;MAZOWIECKIE;ZWOLEŃ
+('OPOLSKIE', 'GÓRA ŚW. ANNY');;OpGora12728;;Góra Św. Anny lokalna 12728;;1991-12-31;2006-06-30;BRAK DANYCH;pozamiejski;kontenerowa stacjonarna;ul. Leśnicka;50.451667;18.163333;OPOLSKIE;GÓRA ŚW. ANNY
+('PODLASKIE', 'BORSUKOWIZNA');;PdBorsukowiz;PL0150A;Borsukowizna, Szkółka Leśna;PdBorsuWiejska;2004-09-01;;tło;pozamiejski;kontenerowa stacjonarna;;53.215492;23.642153;PODLASKIE;BORSUKOWIZNA
+('PODKARPACKIE', 'CZARNA');;PkCzarnaWSSENafGaz;PL0153A;Czarna-OśrNaftaGaz-WSSE;;1994-01-01;2006-12-31;tło;pozamiejski;w budynku;ul. Ośrodek Wyp-Szkol Nafta-Gaz;49.308889;22.663903;PODKARPACKIE;CZARNA
+('ŚWIĘTOKRZYSKIE', 'JĘDRZEJÓW');;SkJedrMieszkMOB;PL0772A;Jędrzejów, MOBILNA;;2020-01-01;2020-12-30;tło;miejski;mobilna;ul. Mieszka I 9;50.643673;20.284885;ŚWIĘTOKRZYSKIE;JĘDRZEJÓW
+('ŚWIĘTOKRZYSKIE', 'SITKÓWKA NOWINY');;SKNowinyCemen;PL0284A;Nowiny;;2004-02-11;2009-03-01;przemysłowa;pozamiejski;kontenerowa stacjonarna;ul. Przemysłowa 32;50.803894;20.543278;ŚWIĘTOKRZYSKIE;SITKÓWKA NOWINY
+('ŚWIĘTOKRZYSKIE', 'SOLEC ZDRÓJ');;SkSolecZdroj;PL0680A;Solec-Zdrój;SkSolecZdrojMOB;2017-01-01;;tło;podmiejski;wolnostojący pobornik pyłu;;50.358659;20.886184;ŚWIĘTOKRZYSKIE;SOLEC ZDRÓJ
+('ŚWIĘTOKRZYSKIE', 'TRZCIANKA');;SkTrzciOsiek;PL0288A;Trzcianka;SkPolanTrzc;1997-01-01;2016-09-09;tło;pozamiejski;wolnostojący pobornik pyłu;Trzcianka 7;50.486298;21.394103;ŚWIĘTOKRZYSKIE;TRZCIANKA
+('ŚWIĘTOKRZYSKIE', 'WŁOSZCZOWA');;SkWloszKilinMOB;PL0829A;Włoszczowa, ul. Kilińskiego;;2023-01-01;2023-12-28;tło;miejski;mobilna;ul. Kilińskiego;50.850321;19.97199;ŚWIĘTOKRZYSKIE;WŁOSZCZOWA
+('ŚLĄSKIE', 'KUŹNIA NIEBOROWICKA');;SlKuzniGliw_wiejs;;Kuźnia Nieb_gliwic-WIOŚ;;1992-01-01;2004-12-31;tło;pozamiejski;kontenerowa stacjonarna;ul. Wiejska 12;-999.0;-999.0;ŚLĄSKIE;KUŹNIA NIEBOROWICKA
+('WARMIŃSKO-MAZURSKIE', 'BISKUPIEC');;WmBiskupMickMOB;PL0755A;WIOŚ Biskupiec-Mobilna;;2020-01-01;2021-12-31;tło;miejski;mobilna;ul. Mickiewicza 8;53.860702;20.957892;WARMIŃSKO-MAZURSKIE;BISKUPIEC
+('WARMIŃSKO-MAZURSKIE', 'GLITAJNY');;WmGlitajn;PL0654A;WIOŚ Glitajny;;2015-04-07;2021-02-22;przemysłowa;podmiejski;wolnostojący pobornik pyłu;;54.184728;21.152914;WARMIŃSKO-MAZURSKIE;GLITAJNY
+('WIELKOPOLSKIE', 'BORÓWIEC');;WpBoroDrapal;PL0573A;Borówiec, ul. Drapałka;WpWKP011/10;2011-01-01;;tło;pozamiejski;kontenerowa stacjonarna;ul. Drapałka 4;52.27672;17.074187;WIELKOPOLSKIE;BORÓWIEC
+('WIELKOPOLSKIE', 'KONIN');;WpKonin31017;;Konin, ul. Wieniawskiego 8;;2003-04-25;2004-12-31;tło;miejski;kontenerowa stacjonarna;ul. Wieniawskiego 8;-999.0;-999.0;WIELKOPOLSKIE;KONIN
+('WIELKOPOLSKIE', 'KONIN');;WpKonin31018;;Konin, ul. Leśna 23;;2003-04-14;2004-12-31;tło;miejski;w budynku;ul. Leśna 21;-999.0;-999.0;WIELKOPOLSKIE;KONIN
+('WIELKOPOLSKIE', 'KONIN');;WpKoninStaszica;;Konin, ul. Staszica 16;;2004-03-01;2005-12-31;tło;miejski;w budynku;ul. Staszica 16;-999.0;-999.0;WIELKOPOLSKIE;KONIN
+('WIELKOPOLSKIE', 'KRZYŻÓWKA');;WpPiaskiKrzy;PL0247A;Piaski, Krzyżówka;WpWKP004;2005-01-01;;tło;pozamiejski;kontenerowa stacjonarna;Piaski 10;52.501318;17.773175;WIELKOPOLSKIE;KRZYŻÓWKA
+('WIELKOPOLSKIE', 'PIŁA');;WpPila57192;;Piła, ul. Okrzei 8;;2003-04-22;2004-12-31;tło;miejski;w budynku;ul. Okrzei 8;-999.0;-999.0;WIELKOPOLSKIE;PIŁA
+('WIELKOPOLSKIE', 'TUREK');;WpTurek31046;;Turek, ul. Uniejowska 1a;;2003-04-22;2004-12-31;tło;miejski;w budynku;ul. Uniejowska 1a;-999.0;-999.0;WIELKOPOLSKIE;TUREK
+('WIELKOPOLSKIE', 'PIOTRKOWICE');;WpWKP009;;WKPPiotrkowice09;;2009-01-01;2014-01-01;tło;pozamiejski;kontenerowa stacjonarna;;52.353806;18.345576;WIELKOPOLSKIE;PIOTRKOWICE
+('ZACHODNIOPOMORSKIE', 'STARGARD SZCZECIŃSKI');;ZpStarStargardWSSE;PL0474A;Stargard Szczeciński;;1992-01-01;2010-01-01;komunikacyjna;miejski;w budynku;ul. Czarnieckiego 34;53.337415;15.039209;ZACHODNIOPOMORSKIE;STARGARD SZCZECIŃSKI

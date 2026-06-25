@@ -1,0 +1,39 @@
+# ======================
+# Sekrety / hasła
+# ======================
+.env
+*.env
+
+# ======================
+# Backupy bazy / dumpy
+# ======================
+Backups/
+*.dump
+*.backup
+*.sql.gz
+
+# ======================
+# Python
+# ======================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# ======================
+# Środowiska
+# ======================
+.venv/
+venv/
+env/
+*.egg-info/
+
+# ======================
+# IDE / system
+# ======================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

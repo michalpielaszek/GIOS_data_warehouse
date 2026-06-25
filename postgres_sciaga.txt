@@ -1,0 +1,288 @@
+POSTGRESQL / psql - ŚCIĄGA DO PROJEKTU HURTOWNI DANYCH
+=======================================================
+
+1. LOGOWANIE I SESJA
+--------------------
+
+psql -U pmichal -h localhost -p 5432 -d hurtownia_db
+    Logowanie do bazy hurtownia_db jako użytkownik pmichal.
+
+psql -U postgres -h localhost -p 5432
+    Logowanie jako administrator postgres.
+
+\q
+    Wyjście z psql.
+
+SHOW search_path;
+    Pokazuje, w jakich schematach PostgreSQL szuka tabel domyślnie.
+
+SET search_path TO gios, public;
+    Ustawia schemat gios jako domyślny w bieżącej sesji.
+
+ALTER ROLE pmichal IN DATABASE hurtownia_db SET search_path TO gios, public;
+    Ustawia domyślny search_path dla użytkownika pmichal w bazie hurtownia_db.
+
+SHOW server_encoding;
+SHOW client_encoding;
+    Sprawdza kodowanie serwera i klienta.
+
+W Windows CMD przed psql, jeśli są problemy z polskimi znakami:
+chcp 65001
+set PGCLIENTENCODING=UTF8
+
+
+2. BAZY, SCHEMATY, TABELE
+-------------------------
+
+\l
+    Lista baz danych.
+
+\c hurtownia_db
+    Przełączenie na bazę hurtownia_db.
+
+\dn
+    Lista schematów.
+
+CREATE SCHEMA IF NOT EXISTS gios;
+    Tworzy schemat gios, jeśli jeszcze nie istnieje.
+
+DROP SCHEMA gios CASCADE;
+    Usuwa schemat gios razem ze wszystkimi obiektami w nim. Uwaga: kasuje dużo.
+
+\dt
+    Lista tabel z aktualnego search_path.
+
+\dt gios.*
+    Lista tabel w schemacie gios.
+
+\d gios.wojewodztwo
+    Opis struktury tabeli.
+
+SELECT table_schema, table_name
+FROM information_schema.tables
+WHERE table_schema = 'gios'
+ORDER BY table_name;
+    Lista tabel w schemacie gios przez information_schema.
+
+
+3. TWORZENIE TABEL
+------------------
+
+CREATE TABLE gios.wojewodztwo (
+    wojewodztwo_id SERIAL PRIMARY KEY,
+    nazwa_wojewodztwa TEXT NOT NULL,
+    CONSTRAINT uq_wojewodztwo_nazwa UNIQUE (nazwa_wojewodztwa)
+);
+    Tworzy tabelę województw z kluczem głównym i unikalną nazwą.
+
+CREATE TABLE gios.czas (
+    czas_id SERIAL PRIMARY KEY,
+    data_czas TIMESTAMP NOT NULL,
+    data DATE NOT NULL,
+    rok INTEGER NOT NULL,
+    miesiac INTEGER NOT NULL,
+    dzien_miesiaca INTEGER NOT NULL,
+    godzina INTEGER NOT NULL,
+    CONSTRAINT uq_czas_data_czas UNIQUE (data_czas),
+    CONSTRAINT chk_czas_miesiac CHECK (miesiac BETWEEN 1 AND 12),
+    CONSTRAINT chk_czas_godzina CHECK (godzina BETWEEN 0 AND 23)
+);
+    Przykład wymiaru czasu.
+
+SERIAL
+    Automatycznie rosnący integer, często używany jako techniczny ID.
+
+BIGSERIAL
+    Większa wersja SERIAL, dobra dla dużej tabeli faktów, np. pomiar.
+
+TEXT
+    Tekst dowolnej długości.
+
+INTEGER
+    Liczba całkowita.
+
+DOUBLE PRECISION
+    Liczba zmiennoprzecinkowa, dobra dla wartości pomiarowych.
+
+DATE
+    Sama data.
+
+TIMESTAMP
+    Data + godzina.
+
+BOOLEAN
+    true / false.
+
+
+4. CONSTRAINTS - OGRANICZENIA
+-----------------------------
+
+PRIMARY KEY
+    Klucz główny tabeli. Jednoznacznie identyfikuje rekord.
+
+FOREIGN KEY
+    Klucz obcy. Wymusza, że wartość istnieje w tabeli nadrzędnej.
+
+UNIQUE
+    Wymusza unikalność wartości lub kombinacji wartości.
+
+NOT NULL
+    Wymusza, że kolumna nie może być pusta.
+
+CHECK
+    Własny warunek logiczny, np. godzina między 0 i 23.
+
+Przykład:
+CONSTRAINT uq_substancja_kod UNIQUE (kod_wskaznika)
+    Nazwany constraint. Jeśli zostanie naruszony, PostgreSQL pokaże jego nazwę.
+
+Przykład błędu:
+ERROR: duplicate key value violates unique constraint "uq_substancja_kod"
+    Próba dodania duplikatu do kolumny z UNIQUE.
+
+
+5. MODYFIKACJE STRUKTURY
+------------------------
+
+ALTER TABLE gios.wojewodztwo DROP COLUMN IF EXISTS kod_wojewodztwa;
+    Usuwa kolumnę z tabeli. Uwaga: usuwa też dane z tej kolumny.
+
+ALTER TABLE gios.stacja ADD COLUMN uwagi TEXT;
+    Dodaje nową kolumnę.
+
+ALTER TABLE gios.stacja ALTER COLUMN kod_stacji SET NOT NULL;
+    Ustawia NOT NULL. Zadziała tylko, jeśli nie ma NULL-i.
+
+ALTER TABLE gios.stacja ALTER COLUMN kod_stacji DROP NOT NULL;
+    Usuwa NOT NULL.
+
+ALTER TABLE public.pomiar SET SCHEMA gios;
+    Przenosi tabelę ze schematu public do gios.
+
+DROP TABLE IF EXISTS gios.pomiar CASCADE;
+    Usuwa tabelę. CASCADE usuwa też zależności, np. FK.
+
+TRUNCATE TABLE gios.pomiar;
+    Czyści wszystkie dane z tabeli, ale zostawia strukturę.
+
+TRUNCATE TABLE gios.pomiar RESTART IDENTITY;
+    Czyści dane i resetuje licznik SERIAL/BIGSERIAL.
+
+
+6. INSERT, SELECT, UPDATE, DELETE
+---------------------------------
+
+INSERT INTO gios.wojewodztwo (nazwa_wojewodztwa)
+VALUES ('DOLNOŚLĄSKIE');
+    Dodaje jeden rekord.
+
+INSERT INTO gios.wojewodztwo (nazwa_wojewodztwa)
+VALUES ('DOLNOŚLĄSKIE')
+ON CONFLICT (nazwa_wojewodztwa) DO NOTHING;
+    Dodaje rekord, ale ignoruje duplikat.
+
+SELECT * FROM gios.wojewodztwo;
+    Pobiera wszystkie rekordy.
+
+SELECT *
+FROM gios.wojewodztwo
+ORDER BY nazwa_wojewodztwa;
+    Pobiera i sortuje.
+
+SELECT COUNT(*) FROM gios.wojewodztwo;
+    Liczy rekordy.
+
+SELECT *
+FROM gios.wojewodztwo
+WHERE nazwa_wojewodztwa = 'DOLNOŚLĄSKIE';
+    Filtrowanie.
+
+UPDATE gios.wojewodztwo
+SET nazwa_wojewodztwa = 'DOLNOŚLĄSKIE'
+WHERE wojewodztwo_id = 1;
+    Aktualizacja rekordu.
+
+DELETE FROM gios.wojewodztwo
+WHERE wojewodztwo_id = 1;
+    Usunięcie rekordu.
+
+
+7. JOINY
+--------
+
+SELECT s.kod_stacji, s.nazwa_stacji, m.nazwa_miejscowosci
+FROM gios.stacja s
+LEFT JOIN gios.miejscowosc m
+    ON s.miejscowosc_id = m.miejscowosc_id;
+    LEFT JOIN: pokaże wszystkie stacje, nawet jeśli nie mają miejscowości.
+
+SELECT p.pomiar_id, p.wartosc_pomiaru, st.kod_stanowiska
+FROM gios.pomiar p
+JOIN gios.stanowisko st
+    ON p.stanowisko_id = st.stanowisko_id;
+    INNER JOIN: pokaże tylko pasujące rekordy.
+
+
+8. WALIDACJE PRZYDATNE W PROJEKCIE
+----------------------------------
+
+SELECT kod_stacji, COUNT(*)
+FROM gios.stacja
+GROUP BY kod_stacji
+HAVING COUNT(*) > 1;
+    Szuka duplikatów kodów stacji.
+
+SELECT kod_wskaznika, COUNT(*)
+FROM gios.substancja
+GROUP BY kod_wskaznika
+HAVING COUNT(*) > 1;
+    Szuka duplikatów substancji.
+
+SELECT *
+FROM gios.pomiar
+WHERE czas_do_id = czas_od_id;
+    Szuka pomiarów z zerowym przedziałem, jeśli ID są takie same.
+
+SELECT COUNT(*)
+FROM gios.pomiar
+WHERE wartosc_pomiaru IS NULL
+  AND czy_pomiar_dostepny = true;
+    Szuka niespójności: flaga dostępny, ale brak wartości.
+
+SELECT COUNT(*)
+FROM gios.pomiar
+WHERE wartosc_pomiaru IS NOT NULL
+  AND czy_pomiar_dostepny = false;
+    Szuka niespójności: jest wartość, ale flaga niedostępny.
+
+
+9. TRANSAKCJE
+-------------
+
+BEGIN;
+    Start transakcji.
+
+COMMIT;
+    Zatwierdza zmiany.
+
+ROLLBACK;
+    Cofa zmiany od BEGIN.
+
+Przykład:
+BEGIN;
+INSERT INTO gios.wojewodztwo (nazwa_wojewodztwa) VALUES ('TEST');
+ROLLBACK;
+    Rekord TEST nie zostanie zapisany.
+
+
+10. INDEKSY - KRÓTKO
+--------------------
+
+CREATE INDEX idx_stacja_kod ON gios.stacja(kod_stacji);
+    Tworzy indeks przyspieszający wyszukiwanie po kod_stacji.
+
+DROP INDEX IF EXISTS gios.idx_stacja_kod;
+    Usuwa indeks.
+
+UNIQUE constraint zwykle tworzy indeks automatycznie.
+

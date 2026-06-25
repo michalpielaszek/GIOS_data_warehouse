@@ -1,0 +1,341 @@
+SQLALCHEMY - ŚCIĄGA DO ETL Z POSTGRESQL
+=======================================
+
+1. PO CO SQLALCHEMY I PSYCOPG2?
+-------------------------------
+
+psycopg2
+    Sterownik PostgreSQL. Faktycznie rozmawia z bazą.
+
+SQLAlchemy
+    Warstwa wyżej: engine, połączenia, transakcje, parametryzowane SQL, integracja z Pandas.
+
+Układ:
+Python / Pandas
+    -> SQLAlchemy
+        -> psycopg2
+            -> PostgreSQL
+
+
+2. INSTALACJA
+-------------
+
+conda install sqlalchemy psycopg2 pandas
+    Instalacja przez conda.
+
+pip install sqlalchemy psycopg2-binary pandas
+    Instalacja przez pip.
+
+Test:
+python -c "import sqlalchemy, psycopg2; print('OK')"
+
+
+3. BEZPIECZNE TWORZENIE ENGINE
+------------------------------
+
+from getpass import getpass
+from sqlalchemy import create_engine
+from sqlalchemy.engine import URL, Engine
+
+DB_USER = "pmichal"
+DB_HOST = "localhost"
+DB_PORT = 5432
+DB_NAME = "hurtownia_db"
+DB_SCHEMA = "gios"
+
+
+def get_engine(password: str | None = None) -> Engine:
+    if password is None:
+        password = getpass("Hasło do PostgreSQL: ")
+
+    url = URL.create(
+        drivername="postgresql+psycopg2",
+        username=DB_USER,
+        password=password,
+        host=DB_HOST,
+        port=DB_PORT,
+        database=DB_NAME,
+    )
+
+    return create_engine(url)
+
+URL.create(...)
+    Bezpiecznie buduje URL połączenia. Dobrze obsługuje znaki specjalne w haśle.
+
+create_engine(url)
+    Tworzy engine, czyli fabrykę połączeń.
+
+
+4. TEST POŁĄCZENIA
+------------------
+
+from sqlalchemy import text
+
+
+def test_connection() -> None:
+    engine = get_engine()
+
+    with engine.connect() as conn:
+        conn.execute(text("SET search_path TO gios, public"))
+
+        result = conn.execute(text("""
+            SELECT current_user, current_database(), current_schema();
+        """))
+
+        print(result.fetchone())
+
+Oczekiwany wynik:
+('pmichal', 'hurtownia_db', 'gios')
+
+
+5. ENGINE, CONNECTION, TRANSACTION
+----------------------------------
+
+engine = get_engine()
+    Engine nie jest pojedynczym połączeniem. To obiekt do zarządzania połączeniami.
+
+with engine.connect() as conn:
+    result = conn.execute(text("SELECT 1"))
+    print(result.fetchone())
+    Połączenie bez automatycznego commita dla zmian.
+
+with engine.begin() as conn:
+    conn.execute(text("INSERT ..."), params)
+    Transakcja: jeśli OK -> COMMIT, jeśli błąd -> ROLLBACK.
+
+Do ETL insertów używaj zwykle engine.begin().
+
+
+6. PARAMETRYZOWANE SQL
+----------------------
+
+from sqlalchemy import text
+
+sql = text("""
+    INSERT INTO gios.wojewodztwo (nazwa_wojewodztwa)
+    VALUES (:nazwa_wojewodztwa)
+""")
+
+params = {"nazwa_wojewodztwa": "DOLNOŚLĄSKIE"}
+
+with engine.begin() as conn:
+    conn.execute(sql, params)
+
+:nazwa_wojewodztwa
+    Parametr SQLAlchemy.
+
+Klucz w dict musi mieć taką samą nazwę:
+{"nazwa_wojewodztwa": "DOLNOŚLĄSKIE"}
+
+Nie klej SQL przez f-string z danymi użytkownika.
+Dobrze:
+VALUES (:nazwa)
+Źle:
+f"VALUES ('{nazwa}')"
+
+
+7. INSERT WIELU REKORDÓW
+------------------------
+
+records = [
+    {"nazwa_wojewodztwa": "DOLNOŚLĄSKIE"},
+    {"nazwa_wojewodztwa": "MAZOWIECKIE"},
+]
+
+with engine.begin() as conn:
+    conn.execute(sql, records)
+
+SQLAlchemy wykona insert dla każdego słownika.
+Możesz myśleć o tym jak o ukrytej pętli:
+for record in records:
+    conn.execute(sql, record)
+
+
+8. INSERT Z ON CONFLICT
+-----------------------
+
+sql = text("""
+    INSERT INTO gios.wojewodztwo (nazwa_wojewodztwa)
+    VALUES (:nazwa_wojewodztwa)
+    ON CONFLICT (nazwa_wojewodztwa) DO NOTHING;
+""")
+
+ON CONFLICT ... DO NOTHING
+    Jeśli rekord łamie UNIQUE, PostgreSQL go pomija bez błędu.
+
+Warunek:
+    Kolumna w ON CONFLICT musi mieć UNIQUE albo PRIMARY KEY.
+
+
+9. PRZYKŁAD FUNKCJI INSERT
+--------------------------
+
+import pandas as pd
+from sqlalchemy import text
+
+
+def insert_wojewodztwa(woj_df: pd.DataFrame) -> None:
+    engine = get_engine()
+
+    sql = text("""
+        INSERT INTO gios.wojewodztwo (
+            nazwa_wojewodztwa
+        )
+        VALUES (
+            :nazwa_wojewodztwa
+        )
+        ON CONFLICT (nazwa_wojewodztwa) DO NOTHING;
+    """)
+
+    records = woj_df.to_dict(orient="records")
+
+    with engine.begin() as conn:
+        conn.execute(sql, records)
+
+    print(f"Przetworzono województwa: {len(records)}")
+
+
+10. SELECT I ODCZYT WYNIKÓW
+---------------------------
+
+with engine.connect() as conn:
+    result = conn.execute(text("SELECT * FROM gios.wojewodztwo"))
+    for row in result:
+        print(row)
+
+fetchone()
+    Pobiera jeden rekord.
+
+fetchall()
+    Pobiera wszystkie rekordy.
+
+for row in result
+    Iteruje po wynikach.
+
+
+11. SELECT DO PANDAS
+--------------------
+
+import pandas as pd
+
+engine = get_engine()
+
+df = pd.read_sql("SELECT * FROM gios.wojewodztwo", con=engine)
+    Czyta wynik SQL do DataFrame.
+
+
+12. PANDAS TO_SQL
+-----------------
+
+df.to_sql(
+    name="wojewodztwo",
+    con=engine,
+    schema="gios",
+    if_exists="append",
+    index=False,
+    method="multi"
+)
+
+name
+    Nazwa tabeli.
+
+schema
+    Schemat, np. gios.
+
+if_exists="append"
+    Dopisuje dane do istniejącej tabeli.
+
+if_exists="replace"
+    Usuwa tabelę i tworzy od nowa. Uwaga: ryzykowne.
+
+if_exists="fail"
+    Błąd, jeśli tabela istnieje.
+
+index=False
+    Nie zapisuje indeksu DataFrame jako kolumny.
+
+method="multi"
+    Wstawia wiele rekordów naraz.
+
+Do wymiarów z UNIQUE lepiej często używać ręcznego INSERT ... ON CONFLICT.
+Do dużej tabeli faktów można rozważyć to_sql albo COPY.
+
+
+13. OBSŁUGA NULL
+----------------
+
+Python None -> SQL NULL
+
+records = [
+    {"typ_pomiaru": None, "czas_usredniania": "1g"}
+]
+
+Pandas NaN czasem trzeba zamienić na None:
+df = df.where(pd.notna(df), None)
+
+
+14. ŁADOWANIE WYMIARÓW - WZORZEC
+--------------------------------
+
+1. Przygotuj DataFrame z dokładnie tymi kolumnami, których oczekuje SQL.
+2. Usuń duplikaty w Pandas.
+3. Zamień NaN na None.
+4. Zamień DataFrame na listę dictów.
+5. Wykonaj INSERT ... ON CONFLICT.
+
+Przykład:
+records = df.to_dict(orient="records")
+with engine.begin() as conn:
+    conn.execute(sql, records)
+
+
+15. MAPOWANIE ID Z BAZY
+-----------------------
+
+sql = text("""
+    SELECT wojewodztwo_id, nazwa_wojewodztwa
+    FROM gios.wojewodztwo;
+""")
+
+with engine.connect() as conn:
+    rows = conn.execute(sql).fetchall()
+
+mapping = {row.nazwa_wojewodztwa: row.wojewodztwo_id for row in rows}
+
+Przykład użycia w Pandas:
+df["wojewodztwo_id"] = df["nazwa_wojewodztwa"].map(mapping)
+
+
+16. TRANSAKCJE I BŁĘDY
+----------------------
+
+try:
+    with engine.begin() as conn:
+        conn.execute(sql, records)
+except Exception as e:
+    print(type(e).__name__)
+    print(e)
+
+Jeśli błąd wystąpi w engine.begin(), SQLAlchemy zrobi ROLLBACK.
+
+Typowe błędy:
+- naruszenie UNIQUE,
+- naruszenie FOREIGN KEY,
+- NULL w kolumnie NOT NULL,
+- zły typ danych,
+- zła nazwa tabeli/schematu,
+- błędna nazwa bazy.
+
+
+17. DOBRE PRAKTYKI
+------------------
+
+- Hasła nie trzymaj w kodzie. Używaj getpass albo .env.
+- Nie sklejaj SQL przez f-string z wartościami danych.
+- Używaj parametrów :parametr.
+- Do insertów używaj engine.begin().
+- Do testów rób SELECT COUNT(*) po insercie.
+- Najpierw ładuj wymiary, potem fakty.
+- Do tabel słownikowych używaj ON CONFLICT DO NOTHING.
+- Po insercie sprawdzaj, ile rekordów faktycznie jest w bazie.
+
