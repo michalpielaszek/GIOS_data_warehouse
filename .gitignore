@@ -37,3 +37,10 @@ env/
 .idea/
 .DS_Store
 Thumbs.db
+
+# ======================
+# Pliki pomocnicze
+# ======================
+pandas_sciaga.txt
+postgres_sciaga.txt
+sqlalchemy_sciaga.txt

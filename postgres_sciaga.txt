@@ -1,6 +1,13 @@
 POSTGRESQL / psql - ŚCIĄGA DO PROJEKTU HURTOWNI DANYCH
 =======================================================
 
+UTF8:
+    cmd:
+        chcp65001
+        set PYTHONIOENCODING=utf-8
+    psql:
+        \encoding UTF8
+
 1. LOGOWANIE I SESJA
 --------------------
 

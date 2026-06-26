@@ -1,0 +1,13 @@
+﻿Nr;kod_stanowiska;kod_stacji;Nazwa stacji;kod_wskaznika;Wskaźnik;czas_usredniania;typ_pomiaru;Data uruchomienia;Data zamknięcia;nazwa_wojewodztwa;nazwa_strefy;stacja_id;metoda_id;substancja_id;strefa_id;jednostka
+3575;PdSuwPulaski-BaA(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;BaA(PM10);benzo(a)antracen w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;12;25;
+3576;PdSuwPulaski-BaA(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;BaA(PM10);benzo(a)antracen w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;12;25;
+3578;PdSuwPulaski-BbF(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;BbF(PM10);benzo(b)fluoranten w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;13;25;
+3579;PdSuwPulaski-BbF(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;BbF(PM10);benzo(b)fluoranten w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;13;25;
+3580;PdSuwPulaski-BjF(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;BjF(PM10);benzo(j)fluoranten w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;14;25;
+3581;PdSuwPulaski-BjF(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;BjF(PM10);benzo(j)fluoranten w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;14;25;
+3582;PdSuwPulaski-BkF(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;BkF(PM10);benzo(k)fluoranten w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;15;25;
+3583;PdSuwPulaski-BkF(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;BkF(PM10);benzo(k)fluoranten w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;15;25;
+3585;PdSuwPulaski-DBahA(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;DBahA(PM10);dibenzo(a,h)antracen w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;17;25;
+3586;PdSuwPulaski-DBahA(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;DBahA(PM10);dibenzo(a,h)antracen w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;17;25;
+3587;PdSuwPulaski-IP(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;IP(PM10);indeno(1,2,3-cd)piren w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;18;25;
+3588;PdSuwPulaski-IP(PM10)-24g;PdSuwPulaski;Suwałki, ul. Pułaskiego 73;IP(PM10);indeno(1,2,3-cd)piren w PM10;24-godzinny;manualny;2015-01-01;2017-12-31;PODLASKIE;strefa podlaska;709;2;18;25;

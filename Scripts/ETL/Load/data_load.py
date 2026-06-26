@@ -16,7 +16,65 @@ from datetime import datetime, date
 def validate_identifier(name: str) -> None:
     if not re.fullmatch(r"[a-zA-Z_][a-zA-Z0-9_]*", name):
         raise ValueError(f"Niepoprawna nazwa SQL: {name}")
+
+def get_strefa_wojewodztwo_map(
+    engine: Engine,
+    schema: str = "gios",
+    key_columns: list[str] | None = ['nazwa_strefy', 'nazwa_wojewodztwa']
+) -> dict[Any, int]:
     
+    cols = ["nazwa_strefy", "nazwa_wojewodztwa"]
+
+    if key_columns is not None:
+        cols = key_columns
+
+    cols_sql = ", ".join(cols)
+
+    where_sql = " AND ".join(
+        f"{col} IS NOT NULL"
+        for col in cols
+    )
+
+    sql = text(f"""
+        SELECT {cols_sql}, strefa_id
+        FROM {schema}.strefa
+        JOIN {schema}.wojewodztwo 
+            ON {schema}.strefa.wojewodztwo_id = {schema}.wojewodztwo.wojewodztwo_id
+        WHERE {where_sql}
+    """)
+
+    with engine.connect() as conn:
+        rows = conn.execute(sql).fetchall()
+
+    return {
+        (row[0], row[1]): row[2]
+        for row in rows
+    }
+
+def get_metoda_pomiaru_map(
+    engine: Engine,
+    key_columns: list[str] | None = ['czas_usredniania', 'typ_pomiaru']
+)->dict[Any, int]:
+    
+    cols = 'czas_usredniania', 'typ_pomiaru'
+    if key_columns != None:
+        cols = ""
+        for key_col in key_columns:
+            cols += key_col + ","
+
+    sql = text(f"""
+        SELECT {cols} metoda_id
+        FROM gios.metoda_pomiaru
+    """)
+
+    with engine.connect() as conn:
+        rows = conn.execute(sql).fetchall()
+
+    return {
+        (row[0], row[1]): row[2]
+        for row in rows
+    }
+      
 def get_table_columns(
     engine: Engine,
     table: str,
@@ -32,7 +90,30 @@ def get_table_columns(
     with engine.connect() as conn:
         result = conn.execute(sql, {"schema": schema, "table": table})
         return {row[0] for row in result}
-    
+
+def get_stacja_map(
+    engine: Engine,
+    key_column: str = "kod_stacji"
+) -> dict[Any, int]:
+    sql = text(f"""
+        SELECT {key_column}, stacja_id
+        FROM gios.stacja
+        WHERE {key_column} IS NOT NULL
+    """)
+
+    with engine.connect() as conn:
+        rows = conn.execute(sql).fetchall()
+
+    result = {}
+
+    for row in rows:
+        key = str(row[0]).strip()
+        stacja_id = int(row[1])
+
+        result[key] = stacja_id
+
+    return result
+
 def insert_records(
     table: str,
     records: list[dict[str, Any]],
@@ -109,6 +190,26 @@ def insert_records(
         conn.execute(sql, clean_records)
 
     print(f"Przetworzono rekordy dla {schema}.{table}: {len(clean_records)}")
+
+def get_substancja_map(
+    engine: Engine,
+    key_column: str = "kod_wskaznika"
+) -> dict[Any, int]:
+    sql = text(f"""
+        SELECT {key_column}, substancja_id
+        FROM gios.substancja
+        WHERE {key_column} IS NOT NULL
+    """)
+
+    with engine.connect() as conn:
+        rows = conn.execute(sql).fetchall()
+
+    return {
+        row[0]: row[1]
+        for row in rows
+    }
+
+
 
 # (typ_normy, ochrona, wartosc_normy, czas_usredniania, jednostka, data_od) -> norma_id
 def get_norma_map(
@@ -613,7 +714,6 @@ def get_miejscowosci_candidates_for_gmina(
 
     return " | ".join(candidates)
 
-
 def build_name_like_pattern(name: str) -> str:
     """
     Z nazwy miejscowości buduje wzorzec do ILIKE.
@@ -639,7 +739,6 @@ def build_name_like_pattern(name: str) -> str:
         pattern = pattern + word + "%"
 
     return pattern
-
 
 def get_miejscowosci_candidates_for_woj_and_name(
     engine: Engine,

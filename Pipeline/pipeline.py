@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from pathlib import Path
+from sqlalchemy import Engine
 
 from Scripts.ETL.Extract.data_exctract import (
     load_excel_sheets,
@@ -17,7 +18,11 @@ from Scripts.ETL.Load.data_load import (
     get_gmina_teryt_map,
     get_miejscowosc_woj_name_map,
     get_miejscowosc_simc_map,
-    get_norma_map
+    get_norma_map,
+    get_stacja_map,
+    get_metoda_pomiaru_map,
+    get_substancja_map,
+    get_strefa_wojewodztwo_map
 )
 from Scripts.ETL.Transform.terc_transform import (
     load_terc,
@@ -68,7 +73,8 @@ def run_pipeline():
     #load_normy_to_db()
     #load_substancje_to_db()
     #load_substancja_regula_to_db()
-    load_metody_pomiaru_to_db()
+    #load_metody_pomiaru_to_db()
+    load_stanowiska_to_db()
 
     # print(extract_data_from_GUGiK_API(lat=50.255072, lon=16.801641).text)
     # print(extract_data_from_GUGiK_API(lat=50.264611, lon=18.975028).text)
@@ -80,7 +86,405 @@ def run_pipeline():
     # parse_uldk_respone_to_terc(data)
 
 def load_stanowiska_to_db():
-    pass
+    metadata_sheets = load_excel_sheets(path_metadata)
+    ark_stanowiska = metadata_sheets[list(metadata_sheets.keys())[1]]
+
+    ark_stanowiska = ark_stanowiska.rename(
+        columns={
+            'Kod stacji': 'kod_stacji'
+        }
+    )
+
+    ark_stanowiska["kod_stacji"] = (
+        ark_stanowiska["kod_stacji"]
+        .astype("string")
+        .str.strip()
+        .replace("", pd.NA)
+    )
+
+    # merge stacja_id przed korektami
+    stacja_map = get_stacja_map(
+        engine=get_engine(),
+        key_column='kod_stacji'
+    )
+
+    print(ark_stanowiska.columns.to_list())
+
+    ark_stanowiska['stacja_id'] = ark_stanowiska['kod_stacji'].map(stacja_map)
+
+    # pojawil sie problem - czesc stanowisk nie miala swojej stacji w bazie danych
+    # stad brakujace stacje sa spisywane do pliku i recznie korygowane
+    # reczna korekta jest potrzebna dlatego ze zadne automatyczne korekty nie naprawia fizycznie brakujacej stacji
+    # nie jest to kwestia literowek, spacji, podobnego nazewnictwa ani historycznych zaszlosci niedoladowanych w bazie
+    # szczatkowe informacje o stacji istnieja jedynie na stronie internetowej WIOS w Rzeszowie
+    # i na tej podstawie zostalaprzygotowana korekta
+
+    # KOREKTY
+    #--------------------------------------------------------------------------------------------------------
+    missing_stacje = ark_stanowiska[
+        ark_stanowiska["stacja_id"].isna()
+    ].copy()
+
+    important_dir = Path("Data") / "Corrections" / "Important"
+    important_dir.mkdir(parents=True, exist_ok=True)
+
+    brakujace_stacje = (
+        missing_stacje
+        .groupby("kod_stacji", as_index=False)
+        .agg({
+            "Nazwa stacji": "first",
+            "Województwo": "first",
+            "Nazwa strefy": "first",
+            "Data uruchomienia": "min",
+            "Data zamknięcia": "max",
+            "Kod stanowiska": lambda x: " | ".join(x.astype(str).head(20)),
+        })
+    )
+
+    brakujace_stacje = brakujace_stacje.rename(columns={
+        "Nazwa stacji": "nazwa_stacji",
+        "Województwo": "wojewodztwo_nazwa",
+        "Nazwa strefy": "nazwa_strefy",
+        "Data uruchomienia": "data_uruchomienia_min",
+        "Data zamknięcia": "data_zamkniecia_max",
+        "Kod stanowiska": "przykladowe_kody_stanowisk",
+    })
+
+    brakujace_stacje.to_csv(
+        important_dir / "brakujace_stacje_dla_stanowisk.csv",
+        sep=";",
+        index=False,
+        encoding="utf-8-sig",
+    )
+
+
+    print(f"Liczba wierszy bez stacja_id: {len(missing_stacje)}")
+
+    load_uzupelniajace_stacje_dla_stanowisk_to_db(
+        engine=get_engine(),
+        path_uzupelnienie=important_dir / "uzupelnienie_brakujacych_stacji_dla_stanowisk.csv",
+    )
+
+    # bardzo ważne: po dopisaniu stacji pobieramy mapę od nowa
+    stacja_map = get_stacja_map(
+        engine=get_engine(),
+        key_column="kod_stacji",
+    )
+
+    ark_stanowiska["stacja_id"] = ark_stanowiska["kod_stacji"].map(stacja_map)
+
+    missing_stacje = ark_stanowiska[
+        ark_stanowiska["stacja_id"].isna()
+    ].copy()
+
+    print(f"Liczba wierszy bez stacja_id po uzupełnieniu (powinno byc zero): {len(missing_stacje)}")
+    ##--------------------------------------------------------------------------------------------------------
+
+    #print(ark_stanowiska.columns.to_list())
+    print(f"Stacje z okreslonym stacja_id: {len(ark_stanowiska)}")
+    #print(ark_stanowiska.head(20))
+
+    # polaczenie z gios.stacja (udane dopasowane id)
+
+    # merge metoda_pomiaru po id
+    metoda_map = get_metoda_pomiaru_map(
+        engine=get_engine(),
+        key_columns=['czas_usredniania', 'typ_pomiaru']
+    )
+
+    #print(ark_stanowiska.columns.to_list())
+
+    ark_stanowiska = ark_stanowiska.rename(columns={
+        'Czas uśredniania': 'czas_usredniania',
+        'Typ pomiaru': 'typ_pomiaru'
+    })
+
+    c_u = (
+        ark_stanowiska['czas_usredniania']
+        .astype("string")
+        .str.strip()
+        .replace("", pd.NA)
+    )
+
+    t_p = (
+        ark_stanowiska['typ_pomiaru']
+        .astype("string")
+        .str.strip()
+        .replace("", pd.NA)
+    )
+
+    ark_stanowiska["c_u_t_p"] = list(zip(c_u, t_p))
+    ark_stanowiska['metoda_id'] = ark_stanowiska['c_u_t_p'].map(metoda_map)
+
+    missing_metoda = ark_stanowiska[
+        ark_stanowiska["metoda_id"].isna()
+    ].copy()
+
+    print(f"Liczba wierszy bez metoda_id (powinno byc zero): {len(missing_metoda)}")
+    ark_stanowiska = ark_stanowiska.drop(columns=['c_u_t_p'])
+    ## polaczenie z gios.metoda_pomiaru (udane dopasowanie id)
+
+    # merge z substancja po id
+    ark_stanowiska = ark_stanowiska.rename(columns={
+        'Wskaźnik - kod': 'kod_wskaznika'
+    })
+
+    substancja_map = get_substancja_map(
+        engine=get_engine(),
+        key_column='kod_wskaznika'
+    )
+
+    ark_stanowiska["substancja_id"] = ark_stanowiska['kod_wskaznika'].map(substancja_map)
+
+    missing_substancja = ark_stanowiska[
+        ark_stanowiska["substancja_id"].isna()
+    ].copy()
+
+    print(f"Liczba wierszy bez substancja_id (powinno byc zero): {len(missing_substancja)}")
+
+    ## polaczenie z gios.substancja (udane dopasowanie id)
+
+    # merge z strefa po id
+    ark_stanowiska = ark_stanowiska.rename(columns={
+        'Województwo': 'nazwa_wojewodztwa',
+        'Nazwa strefy': 'nazwa_strefy'
+    })
+
+    strefa_map = get_strefa_wojewodztwo_map(
+        engine=get_engine(),
+        schema='gios',
+        key_columns=['nazwa_strefy', 'nazwa_wojewodztwa']
+    )
+
+    n_s = (
+        ark_stanowiska['nazwa_strefy']
+        .astype("string")
+        .str.strip()
+        .replace("", pd.NA)
+    )
+
+    n_w = (
+        ark_stanowiska['nazwa_wojewodztwa']
+        .astype("string")
+        .str.strip()
+        .str.upper()
+        .replace("", pd.NA)
+    )
+
+    ark_stanowiska['n_s_n_w'] = list(zip(n_s, n_w))
+    ark_stanowiska['strefa_id'] = ark_stanowiska['n_s_n_w'].map(strefa_map)
+
+    ark_stanowiska = ark_stanowiska.drop(columns=['n_s_n_w'])
+
+    missing_strefa = ark_stanowiska[
+        ark_stanowiska["strefa_id"].isna()
+    ].copy()
+
+    print(f"Liczba wierszy bez strefa_id (powinno byc zero): {len(missing_strefa)}")
+    ## polaczenie z gios.strefa (udane dopasowanie id)
+
+    # na razie uzupelnienie jednsotka jest NULL, potem bedzie do zdecydowania
+    ark_stanowiska['jednostka'] = None
+
+    print(ark_stanowiska.columns.to_list())
+    print(ark_stanowiska.head(20))
+
+    # duplikaty
+    ark_stanowiska = ark_stanowiska.rename(columns={
+        'Kod stanowiska': 'kod_stanowiska'
+    })
+
+    duplikaty_kod_stanowiska = ark_stanowiska[
+    ark_stanowiska.duplicated(subset=["kod_stanowiska"], keep=False)
+    ].copy()
+
+    print(f"Liczba wierszy z powtarzającym się kod_stanowiska: {len(duplikaty_kod_stanowiska)}")
+
+    if len(duplikaty_kod_stanowiska) > 0:
+        diagnostics_dir = Path("Data") / "Corrections" / "Diagnostics"
+        diagnostics_dir.mkdir(parents=True, exist_ok=True)
+
+        duplikaty_kod_stanowiska.to_csv(
+            diagnostics_dir / "duplikaty_stanowiska.csv",
+            sep=";",
+            index=False,
+            encoding="utf-8-sig",
+        )
+
+    ark_stanowiska = ark_stanowiska.drop_duplicates(
+        subset=["kod_stanowiska"],
+        keep="first",
+    )
+
+    print(f"Stanowiska po usunięciu duplikatów: {len(ark_stanowiska)}")
+
+    #INSERT
+    cols = ['substancja_id', 'metoda_id', 'strefa_id', 'stacja_id', 'kod_stanowiska', 'jednostka']
+    unique_cols = ['substancja_id', 'metoda_id', 'stacja_id', 'kod_stanowiska']
+    insert_records(
+        table="stanowisko",
+        records=ark_stanowiska.to_dict(orient="records"),
+        columns=cols,
+        unique_columns=unique_cols
+    )
+
+def load_uzupelniajace_stacje_dla_stanowisk_to_db(
+    engine: Engine,
+    path_uzupelnienie: Path,
+):
+    if not path_uzupelnienie.exists():
+        print(f"Brak pliku uzupełniającego stacje: {path_uzupelnienie}")
+        return
+
+    stacje = pd.read_csv(
+        path_uzupelnienie,
+        sep=";",
+        dtype=str,
+    )
+
+    if len(stacje) == 0:
+        print("Plik uzupełniający stacje jest pusty.")
+        return
+
+    stacje["kod_stacji"] = (
+        stacje["kod_stacji"]
+        .astype("string")
+        .str.strip()
+        .replace("", pd.NA)
+    )
+
+    stacje["nazwa_stacji"] = (
+        stacje["nazwa_stacji"]
+        .astype("string")
+        .str.strip()
+        .replace("", pd.NA)
+    )
+
+    stacje["wojewodztwo_nazwa"] = (
+        stacje["wojewodztwo_nazwa"]
+        .astype("string")
+        .str.strip()
+        .str.upper()
+        .replace("", pd.NA)
+    )
+
+    stacje["miejscowosc_nazwa"] = (
+        stacje["miejscowosc_nazwa"]
+        .astype("string")
+        .str.strip()
+        .str.upper()
+        .replace("", pd.NA)
+    )
+
+    miejscowosc_map_result = get_miejscowosc_woj_name_map(
+        engine=engine,
+        schema="gios",
+    )
+
+    miejscowosc_map = miejscowosc_map_result["result"]
+
+    stacje["wojewodztwo_miejscowosc"] = list(zip(
+        stacje["wojewodztwo_nazwa"],
+        stacje["miejscowosc_nazwa"],
+    ))
+
+    stacje["miejscowosc_id"] = (
+        stacje["wojewodztwo_miejscowosc"]
+        .map(miejscowosc_map)
+    )
+
+    missing_miejscowosc = stacje[stacje["miejscowosc_id"].isna()].copy()
+
+    if len(missing_miejscowosc) > 0:
+        print("Nie udało się zmapować miejscowości dla stacji uzupełniających:")
+        print(missing_miejscowosc[[
+            "kod_stacji",
+            "wojewodztwo_nazwa",
+            "miejscowosc_nazwa",
+        ]])
+        raise ValueError("Brak miejscowosc_id dla stacji uzupełniającej.")
+
+    stacje["miejscowosc_id"] = stacje["miejscowosc_id"].astype(int)
+
+    stacje["data_uruchomienia"] = pd.to_datetime(
+        stacje["data_uruchomienia"],
+        errors="coerce",
+    ).dt.date
+
+    stacje["data_zamkniecia"] = pd.to_datetime(
+        stacje["data_zamkniecia"],
+        errors="coerce",
+    ).dt.date
+
+    for col in [
+        "kod_miedzynarodowy",
+        "stary_kod_stacji",
+        "typ_stacji",
+        "typ_obszaru",
+        "rodzaj_stacji",
+        "adres",
+        "uwagi",
+    ]:
+        if col not in stacje.columns:
+            stacje[col] = None
+
+    stacje["wgs84_fi_n"] = pd.to_numeric(
+        stacje.get("wgs84_fi_n"),
+        errors="coerce",
+    )
+
+    stacje["wgs84_lambda_e"] = pd.to_numeric(
+        stacje.get("wgs84_lambda_e"),
+        errors="coerce",
+    )
+
+    stacje_do_bazy = stacje[[
+        "miejscowosc_id",
+        "adres",
+        "kod_stacji",
+        "kod_miedzynarodowy",
+        "nazwa_stacji",
+        "stary_kod_stacji",
+        "data_uruchomienia",
+        "data_zamkniecia",
+        "typ_stacji",
+        "typ_obszaru",
+        "rodzaj_stacji",
+        "wgs84_fi_n",
+        "wgs84_lambda_e",
+        "uwagi",
+    ]].copy()
+
+    stacje_do_bazy = stacje_do_bazy.astype(object).where(
+        pd.notna(stacje_do_bazy),
+        None,
+    )
+
+    print(f"Ładowanie stacji uzupełniających: {len(stacje_do_bazy)}")
+
+    insert_records(
+        table="stacja",
+        records=stacje_do_bazy.to_dict(orient="records"),
+        columns=[
+            "miejscowosc_id",
+            "adres",
+            "kod_stacji",
+            "kod_miedzynarodowy",
+            "nazwa_stacji",
+            "stary_kod_stacji",
+            "data_uruchomienia",
+            "data_zamkniecia",
+            "typ_stacji",
+            "typ_obszaru",
+            "rodzaj_stacji",
+            "wgs84_fi_n",
+            "wgs84_lambda_e",
+            "uwagi",
+        ],
+        unique_columns=[
+            "kod_stacji",
+        ],
+    )
 
 def load_metody_pomiaru_to_db():
 
